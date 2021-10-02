@@ -7,5 +7,4 @@ export declare class CreateUserDto extends User {
     password: string;
     cpf: string;
     profiles?: Prisma.ProfilesUncheckedCreateNestedManyWithoutUserInput;
-    games?: Prisma.GamesOnUsersUncheckedCreateNestedManyWithoutUserInput;
 }

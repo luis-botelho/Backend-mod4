@@ -1,1 +1,1 @@
-export class Genre {}
+export class Genre{}

@@ -6,6 +6,6 @@ export declare class User implements Prisma.UsersUncheckedCreateInput {
     email: string;
     password: string;
     cpf: string;
+    admin: boolean;
     profiles?: Prisma.ProfilesUncheckedCreateNestedManyWithoutUserInput;
-    games?: Prisma.GamesOnUsersUncheckedCreateNestedManyWithoutUserInput;
 }

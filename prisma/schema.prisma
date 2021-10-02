@@ -1,6 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
+// COnecta ao banco de dados 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -9,7 +7,7 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
-
+// constroe a tabela users 1 user pode ter muitos profiles e muitos jogos
 model Users {
   id       Int            @id @default(autoincrement())
   name     String
@@ -17,43 +15,54 @@ model Users {
   email    String         @unique
   password String
   cpf      String         @unique
+  admin    Boolean        
   profiles Profiles[]
-  games    GamesOnUsers[]
 }
 
-model Games {
-  id          Int            @id @default(autoincrement())
-  title       String         @unique
-  cover       String         @unique
-  description String
-  year        Int
-  IMDB        Float
-  trailer     String         @unique
-  gameplay    String         @unique
-  genre       Genres[]
-  users       GamesOnUsers[]
-}
 
-model GamesOnUsers {
-  userId Int
-  user   Users @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  gameId Int
-  game   Games @relation(fields: [gameId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  @@id([userId, gameId])
+model GenresOnGames {
+  genreId Int
+  genre   Genres @relation(fields: [genreId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  gameId  Int
+  game    Games  @relation(fields: [gameId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([genreId, gameId])
 }
 
 model Genres {
-  id     Int    @id @default(autoincrement())
-  name   String @unique
+  id     Int             @id @default(autoincrement())
+  name   String          @unique
   gameId Int
-  game   Games  @relation(fields: [gameId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  games  GenresOnGames[]
+}
+model Games {
+  id          Int             @id @default(autoincrement())
+  title       String          @unique
+  cover       String          @unique
+  description String
+  year        Int
+  IMDB        Float
+  trailer     String          @unique
+  gameplay    String          @unique
+  genre       GenresOnGames[]
+  users       GamesOnProfiles[]
 }
 
 model Profiles {
   id     Int    @id @default(autoincrement())
-  title  String 
+  title  String
   image  String
-  userId Int
+  userId Int    
   user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  games    GamesOnProfiles[]
+}
+
+model GamesOnProfiles{
+  profileId Int
+  profile   Profiles @relation(fields: [profileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  gameId Int
+  game   Games @relation(fields: [gameId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([profileId, gameId])
 }

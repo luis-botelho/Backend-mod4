@@ -25,7 +25,4 @@ export class CreateUserDto extends User {
 
   @IsOptional()
   profiles?: Prisma.ProfilesUncheckedCreateNestedManyWithoutUserInput;
-
-  @IsOptional()
-  games?: Prisma.GamesOnUsersUncheckedCreateNestedManyWithoutUserInput;
 }
