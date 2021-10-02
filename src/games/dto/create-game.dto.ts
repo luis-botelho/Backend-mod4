@@ -26,10 +26,10 @@ export class CreateGameDto extends Game {
   imdb: number;
   @IsString()
   @IsOptional()
-  trailer?: string | null;
+  trailer: string | null;
   @IsString()
   @IsOptional()
-  gameplay?: string | null;
+  gameplay: string | null;
   @IsOptional()
   users?: Prisma.GamesOnProfilesUncheckedCreateNestedManyWithoutGameInput;
   @IsOptional()
