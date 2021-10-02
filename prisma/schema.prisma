@@ -33,7 +33,6 @@ model GenresOnGames {
 model Genres {
   id     Int             @id @default(autoincrement())
   name   String          @unique
-  gameId Int
   games  GenresOnGames[]
 }
 model Games {

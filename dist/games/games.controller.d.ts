@@ -4,7 +4,7 @@ import { UpdateGameDto } from './dto/update-game.dto';
 export declare class GamesController {
     private readonly gamesService;
     constructor(gamesService: GamesService);
-    create(createGameDto: CreateGameDto): string;
+    create(createGameDto: CreateGameDto): void;
     findAll(): string;
     findOne(id: string): string;
     update(id: string, updateGameDto: UpdateGameDto): string;

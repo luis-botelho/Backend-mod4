@@ -22,10 +22,6 @@ __decorate([
 ], CreateGenreDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], CreateGenreDto.prototype, "gameId", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
 ], CreateGenreDto.prototype, "games", void 0);
 exports.CreateGenreDto = CreateGenreDto;

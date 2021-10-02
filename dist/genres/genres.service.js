@@ -20,16 +20,19 @@ let GenresService = class GenresService {
         return this.prisma.genres.create({ data });
     }
     findAll() {
-        return this.prisma.genres.findMany();
+        return this.prisma.genres.findMany({ include: { games: true } });
     }
     findOne(id) {
-        return `This action returns a #${id} genre`;
+        return this.prisma.genres.findUnique({
+            where: { id },
+            include: { games: true },
+        });
     }
-    update(id, updateGenreDto) {
-        return `This action updates a #${id} genre`;
+    update(id, data) {
+        return this.prisma.genres.update({ where: { id }, data });
     }
     remove(id) {
-        return `This action removes a #${id} genre`;
+        return this.prisma.genres.delete({ where: { id } });
     }
 };
 GenresService = __decorate([

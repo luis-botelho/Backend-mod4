@@ -9,8 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GamesService = void 0;
 const common_1 = require("@nestjs/common");
 let GamesService = class GamesService {
-    create(createGameDto) {
-        return 'This action adds a new game';
+    condtructor(prisma) { }
+    create(data) {
+        return;
     }
     findAll() {
         return `This action returns all games`;

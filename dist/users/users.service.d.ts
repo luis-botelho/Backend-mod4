@@ -5,8 +5,12 @@ export declare class UsersService {
     private readonly prisma;
     constructor(prisma: PrismaService);
     create(data: CreateUserDto): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;
-    findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").Users[]>;
-    findOne(id: number): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;
+    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Users & {
+        profiles: import(".prisma/client").Profiles[];
+    })[]>;
+    findOne(id: number): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users & {
+        profiles: import(".prisma/client").Profiles[];
+    }>;
     update(id: number, data: UpdateUserDto): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;
     remove(id: number): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;
 }

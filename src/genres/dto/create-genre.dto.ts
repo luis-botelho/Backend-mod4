@@ -8,8 +8,5 @@ export class CreateGenreDto extends Genre {
   name: string;
 
   @IsOptional()
-  gameId: number;
-
-  @IsOptional()
-  games?: Prisma.GenresOnGamesCreateNestedManyWithoutGenreInput;
+  games?: Prisma.GenresOnGamesUncheckedCreateNestedManyWithoutGenreInput;
 }

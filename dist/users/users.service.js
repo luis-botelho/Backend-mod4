@@ -20,10 +20,13 @@ let UsersService = class UsersService {
         return this.prisma.users.create({ data });
     }
     findAll() {
-        return this.prisma.users.findMany();
+        return this.prisma.users.findMany({ include: { profiles: true } });
     }
     findOne(id) {
-        return this.prisma.users.findUnique({ where: { id } });
+        return this.prisma.users.findUnique({
+            where: { id },
+            include: { profiles: true },
+        });
     }
     update(id, data) {
         return this.prisma.users.update({ where: { id }, data });

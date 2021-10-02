@@ -9,7 +9,7 @@ export class CreateProfileDto extends Profile {
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  image: string | null;
 
   @IsOptional()
   games?: Prisma.GamesOnProfilesCreateNestedManyWithoutProfileInput;

@@ -20,10 +20,13 @@ let ProfilesService = class ProfilesService {
         return this.prisma.profiles.create({ data });
     }
     findAll() {
-        return this.prisma.profiles.findMany();
+        return this.prisma.profiles.findMany({ include: { games: true } });
     }
     findOne(id) {
-        return this.prisma.profiles.findUnique({ where: { id } });
+        return this.prisma.profiles.findUnique({
+            where: { id },
+            include: { games: true },
+        });
     }
     update(id, data) {
         return this.prisma.profiles.update({ where: { id }, data });

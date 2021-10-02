@@ -11,18 +11,21 @@ export class GenresService {
   }
 
   findAll() {
-    return this.prisma.genres.findMany();
+    return this.prisma.genres.findMany({ include: { games: true } });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} genre`;
+    return this.prisma.genres.findUnique({
+      where: { id },
+      include: { games: true },
+    });
   }
 
-  update(id: number, updateGenreDto: UpdateGenreDto) {
-    return `This action updates a #${id} genre`;
+  update(id: number, data: UpdateGenreDto) {
+    return this.prisma.genres.update({ where: { id }, data });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} genre`;
+    return this.prisma.genres.delete({ where: { id } });
   }
 }

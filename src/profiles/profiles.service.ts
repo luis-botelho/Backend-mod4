@@ -11,11 +11,14 @@ export class ProfilesService {
   }
 
   findAll() {
-    return this.prisma.profiles.findMany();
+    return this.prisma.profiles.findMany({ include: { games: true } });
   }
 
   findOne(id: number) {
-    return this.prisma.profiles.findUnique({ where: { id } });
+    return this.prisma.profiles.findUnique({
+      where: { id },
+      include: { games: true },
+    });
   }
 
   update(id: number, data: UpdateProfileDto) {
