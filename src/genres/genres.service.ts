@@ -14,18 +14,19 @@ export class GenresService {
     return this.prisma.genres.findMany({ include: { games: true } });
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.prisma.genres.findUnique({
       where: { id },
       include: { games: true },
+      rejectOnNotFound: true,
     });
   }
 
-  update(id: number, data: UpdateGenreDto) {
+  async update(id: number, data: UpdateGenreDto) {
     return this.prisma.genres.update({ where: { id }, data });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.prisma.genres.delete({ where: { id } });
   }
 }

@@ -14,18 +14,18 @@ export class GamesService {
     return this.prisma.games.findMany();
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.prisma.games.findUnique({
       where: { id },
       rejectOnNotFound: true,
     });
   }
 
-  update(id: number, data: UpdateGameDto) {
+  async update(id: number, data: UpdateGameDto) {
     return this.prisma.games.update({ where: { id }, data });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.prisma.games.delete({ where: { id } });
   }
 }

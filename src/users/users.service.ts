@@ -14,10 +14,11 @@ export class UsersService {
     return this.prisma.users.findMany({ include: { profiles: true } });
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.prisma.users.findUnique({
       where: { id },
       include: { profiles: true },
+      rejectOnNotFound: true,
     });
   }
 

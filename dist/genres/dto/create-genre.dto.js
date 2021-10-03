@@ -16,8 +16,8 @@ const genre_entity_1 = require("../entities/genre.entity");
 class CreateGenreDto extends genre_entity_1.Genre {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The name must be a string' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The name must not be empty' }),
     __metadata("design:type", String)
 ], CreateGenreDto.prototype, "name", void 0);
 __decorate([

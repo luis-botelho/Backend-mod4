@@ -22,16 +22,16 @@ let GamesService = class GamesService {
     findAll() {
         return this.prisma.games.findMany();
     }
-    findOne(id) {
+    async findOne(id) {
         return this.prisma.games.findUnique({
             where: { id },
             rejectOnNotFound: true,
         });
     }
-    update(id, data) {
+    async update(id, data) {
         return this.prisma.games.update({ where: { id }, data });
     }
-    remove(id) {
+    async remove(id) {
         return this.prisma.games.delete({ where: { id } });
     }
 };

@@ -8,9 +8,9 @@ export declare class ProfilesService {
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Profiles & {
         games: import(".prisma/client").GamesOnProfiles[];
     })[]>;
-    findOne(id: number): import(".prisma/client").Prisma.Prisma__ProfilesClient<import(".prisma/client").Profiles & {
+    findOne(id: number): Promise<import(".prisma/client").Profiles & {
         games: import(".prisma/client").GamesOnProfiles[];
     }>;
-    update(id: number, data: UpdateProfileDto): import(".prisma/client").Prisma.Prisma__ProfilesClient<import(".prisma/client").Profiles>;
-    remove(id: number): import(".prisma/client").Prisma.Prisma__ProfilesClient<import(".prisma/client").Profiles>;
+    update(id: number, data: UpdateProfileDto): Promise<import(".prisma/client").Profiles>;
+    remove(id: number): Promise<import(".prisma/client").Profiles>;
 }

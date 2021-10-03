@@ -8,9 +8,9 @@ export declare class GenresService {
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Genres & {
         games: import(".prisma/client").GenresOnGames[];
     })[]>;
-    findOne(id: number): import(".prisma/client").Prisma.Prisma__GenresClient<import(".prisma/client").Genres & {
+    findOne(id: number): Promise<import(".prisma/client").Genres & {
         games: import(".prisma/client").GenresOnGames[];
     }>;
-    update(id: number, data: UpdateGenreDto): import(".prisma/client").Prisma.Prisma__GenresClient<import(".prisma/client").Genres>;
-    remove(id: number): import(".prisma/client").Prisma.Prisma__GenresClient<import(".prisma/client").Genres>;
+    update(id: number, data: UpdateGenreDto): Promise<import(".prisma/client").Genres>;
+    remove(id: number): Promise<import(".prisma/client").Genres>;
 }

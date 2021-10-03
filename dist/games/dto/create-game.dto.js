@@ -16,38 +16,38 @@ const game_entity_1 = require("../entities/game.entity");
 class CreateGameDto extends game_entity_1.Game {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The title must be a string' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The title must not be empty' }),
     __metadata("design:type", String)
 ], CreateGameDto.prototype, "title", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The cover must be a string' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The cover must not be empty' }),
     __metadata("design:type", String)
 ], CreateGameDto.prototype, "cover", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The description must be a string' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The description must not be empty' }),
     __metadata("design:type", String)
 ], CreateGameDto.prototype, "description", void 0);
 __decorate([
-    (0, class_validator_1.IsInt)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsInt)({ message: 'The year must be an integer' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The year must not be empty' }),
     __metadata("design:type", Number)
 ], CreateGameDto.prototype, "year", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The IMDB must not be empty' }),
     __metadata("design:type", Number)
 ], CreateGameDto.prototype, "imdb", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsString)({ message: 'The trailer link must to be a string' }),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateGameDto.prototype, "trailer", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)({ message: 'The game player must be a string' }),
+    (0, class_validator_1.IsOptional)({ message: 'The game player must not be empty' }),
     __metadata("design:type", String)
 ], CreateGameDto.prototype, "gameplay", void 0);
 __decorate([

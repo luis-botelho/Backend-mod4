@@ -9,5 +9,5 @@ export declare class GamesController {
     findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").Games[]>;
     findOne(id: string): Promise<import(".prisma/client").Games>;
     update(id: string, updateGameDto: UpdateGameDto): Promise<import(".prisma/client").Games>;
-    remove(id: string): import(".prisma/client").Prisma.Prisma__GamesClient<import(".prisma/client").Games>;
+    remove(id: string): Promise<import(".prisma/client").Games>;
 }

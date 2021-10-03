@@ -22,10 +22,11 @@ let UsersService = class UsersService {
     findAll() {
         return this.prisma.users.findMany({ include: { profiles: true } });
     }
-    findOne(id) {
+    async findOne(id) {
         return this.prisma.users.findUnique({
             where: { id },
             include: { profiles: true },
+            rejectOnNotFound: true,
         });
     }
     update(id, data) {

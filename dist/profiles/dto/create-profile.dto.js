@@ -16,13 +16,13 @@ const client_1 = require("@prisma/client");
 class CreateProfileDto extends profile_entity_1.Profile {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The title must be string type.' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The title must not be empty.' }),
     __metadata("design:type", String)
 ], CreateProfileDto.prototype, "title", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)({ message: 'The image must be a string type.' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'The image must not be empty.' }),
     __metadata("design:type", String)
 ], CreateProfileDto.prototype, "image", void 0);
 __decorate([

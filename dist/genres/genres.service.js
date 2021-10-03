@@ -22,16 +22,17 @@ let GenresService = class GenresService {
     findAll() {
         return this.prisma.genres.findMany({ include: { games: true } });
     }
-    findOne(id) {
+    async findOne(id) {
         return this.prisma.genres.findUnique({
             where: { id },
             include: { games: true },
+            rejectOnNotFound: true,
         });
     }
-    update(id, data) {
+    async update(id, data) {
         return this.prisma.genres.update({ where: { id }, data });
     }
-    remove(id) {
+    async remove(id) {
         return this.prisma.genres.delete({ where: { id } });
     }
 };

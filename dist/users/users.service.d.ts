@@ -8,7 +8,7 @@ export declare class UsersService {
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Users & {
         profiles: import(".prisma/client").Profiles[];
     })[]>;
-    findOne(id: number): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users & {
+    findOne(id: number): Promise<import(".prisma/client").Users & {
         profiles: import(".prisma/client").Profiles[];
     }>;
     update(id: number, data: UpdateUserDto): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;

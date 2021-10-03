@@ -14,18 +14,19 @@ export class ProfilesService {
     return this.prisma.profiles.findMany({ include: { games: true } });
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.prisma.profiles.findUnique({
       where: { id },
       include: { games: true },
+      rejectOnNotFound: true,
     });
   }
 
-  update(id: number, data: UpdateProfileDto) {
+  async update(id: number, data: UpdateProfileDto) {
     return this.prisma.profiles.update({ where: { id }, data });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.prisma.profiles.delete({ where: { id } });
   }
 }
