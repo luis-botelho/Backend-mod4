@@ -1,6 +1,6 @@
 // COnecta ao banco de dados 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,7 +15,7 @@ model Users {
   email    String         @unique
   password String
   cpf      String         @unique
-  admin    Boolean        
+  admin    Boolean        @default(false)
   profiles Profiles[]
 }
 
@@ -45,7 +45,7 @@ model Games {
   trailer     String          @unique
   gameplay    String          @unique
   genre       GenresOnGames[]
-  users       GamesOnProfiles[]
+  profiles       GamesOnProfiles[]
 }
 
 model Profiles {
