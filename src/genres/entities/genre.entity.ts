@@ -1,7 +1,7 @@
-import { Prisma } from '.prisma/client';
+import { Game } from 'src/games/entities/game.entity';
 
-export class Genre implements Prisma.GenresUncheckedCreateInput {
+export class Genre {
   id?: number;
   name: string;
-  games?: Prisma.GenresOnGamesUncheckedCreateNestedManyWithoutGenreInput;
+  games?: Game[];
 }

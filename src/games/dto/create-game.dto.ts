@@ -1,11 +1,15 @@
-import { Prisma } from '@prisma/client';
+import { Type } from 'class-transformer';
 import {
+  IsArray,
   IsInt,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
+  ValidateNested,
 } from 'class-validator';
+import { CreateGenreDto } from 'src/genres/dto/create-genre.dto';
+import { Genre } from 'src/genres/entities/genre.entity';
 import { Game } from '../entities/game.entity';
 
 export class CreateGameDto extends Game {
@@ -30,8 +34,10 @@ export class CreateGameDto extends Game {
   @IsString({ message: 'The game player must be a string' })
   @IsOptional({ message: 'The game player must not be empty' })
   gameplay: string | null;
+
+  @ValidateNested({ each: true })
+  @Type(() => CreateGenreDto)
+  @IsArray()
   @IsOptional()
-  users?: Prisma.GamesOnProfilesUncheckedCreateNestedManyWithoutGameInput;
-  @IsOptional()
-  genres?: Prisma.GenresOnGamesUncheckedCreateNestedManyWithoutGameInput;
+  genres?: Genre[];
 }

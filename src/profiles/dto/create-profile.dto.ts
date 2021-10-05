@@ -1,6 +1,13 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { Profile } from '../entities/profile.entity';
-import { Prisma } from '@prisma/client';
+import { CreateGameDto } from 'src/games/dto/create-game.dto';
+import { Type } from 'class-transformer';
 
 export class CreateProfileDto extends Profile {
   @IsString({ message: 'The title must be string type.' })
@@ -12,8 +19,8 @@ export class CreateProfileDto extends Profile {
   image: string | null;
 
   @IsOptional()
-  games?: Prisma.GamesOnProfilesCreateNestedManyWithoutProfileInput;
-
-  @IsOptional()
-  user: Prisma.UsersCreateNestedOneWithoutProfilesInput;
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => CreateGameDto)
+  games?: CreateGameDto[];
 }

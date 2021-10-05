@@ -1,9 +1,8 @@
-import { Prisma } from '.prisma/client';
-
-export class Profile implements Prisma.ProfilesUncheckedCreateInput {
+import { Game } from 'src/games/entities/game.entity';
+export class Profile {
   id?: never;
   title: string;
   image: string;
   userId: never;
-  games?: Prisma.GamesOnProfilesUncheckedCreateNestedManyWithoutProfileInput;
+  games?: Game[];
 }
