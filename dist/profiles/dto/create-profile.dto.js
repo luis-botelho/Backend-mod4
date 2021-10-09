@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateProfileDto = void 0;
 const class_validator_1 = require("class-validator");
 const profile_entity_1 = require("../entities/profile.entity");
-const client_1 = require("@prisma/client");
+const create_game_dto_1 = require("../../games/dto/create-game.dto");
+const class_transformer_1 = require("class-transformer");
 class CreateProfileDto extends profile_entity_1.Profile {
 }
 __decorate([
@@ -27,11 +28,10 @@ __decorate([
 ], CreateProfileDto.prototype, "image", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Object)
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => create_game_dto_1.CreateGameDto),
+    __metadata("design:type", Array)
 ], CreateProfileDto.prototype, "games", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Object)
-], CreateProfileDto.prototype, "user", void 0);
 exports.CreateProfileDto = CreateProfileDto;
 //# sourceMappingURL=create-profile.dto.js.map

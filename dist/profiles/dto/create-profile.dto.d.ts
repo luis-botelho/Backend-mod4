@@ -1,8 +1,8 @@
 import { Profile } from '../entities/profile.entity';
-import { Prisma } from '@prisma/client';
+import { CreateGameDto } from 'src/games/dto/create-game.dto';
 export declare class CreateProfileDto extends Profile {
     title: string;
     image: string | null;
-    games?: Prisma.GamesOnProfilesCreateNestedManyWithoutProfileInput;
-    user: Prisma.UsersCreateNestedOneWithoutProfilesInput;
+    user: never;
+    games?: CreateGameDto[];
 }

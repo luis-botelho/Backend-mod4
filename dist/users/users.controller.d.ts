@@ -5,13 +5,18 @@ export declare class UsersController {
     private readonly usersService;
     constructor(usersService: UsersService);
     private readonly notFound;
-    create(createUserDto: CreateUserDto): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users>;
+    create(createUserDto: CreateUserDto): import(".prisma/client").Prisma.Prisma__UsersClient<import(".prisma/client").Users & {
+        profiles: {
+            title: string;
+            image: string;
+        }[];
+    }>;
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Users & {
         profiles: import(".prisma/client").Profiles[];
     })[]>;
-    findOne(id: string): Promise<import(".prisma/client").Users & {
+    findOne(id: number): Promise<import(".prisma/client").Users & {
         profiles: import(".prisma/client").Profiles[];
     }>;
-    update(id: string, updateUserDto: UpdateUserDto): Promise<import(".prisma/client").Users>;
-    remove(id: string): Promise<import(".prisma/client").Users>;
+    update(id: number, updateUserDto: UpdateUserDto): Promise<import(".prisma/client").Users>;
+    remove(id: number): Promise<import(".prisma/client").Users>;
 }

@@ -15,9 +15,22 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let ProfilesService = class ProfilesService {
     constructor(prisma) {
         this.prisma = prisma;
+        this._include = {
+            games: {
+                select: {
+                    title: true,
+                    cover: true,
+                    description: true,
+                    year: true,
+                    trailer: true,
+                    imdb: true,
+                    gameplay: true,
+                },
+            },
+        };
     }
-    create(data) {
-        return this.prisma.profiles.create({ data });
+    create(dto) {
+        return this.prisma.profiles.create({ dto });
     }
     findAll() {
         return this.prisma.profiles.findMany({ include: { games: true } });

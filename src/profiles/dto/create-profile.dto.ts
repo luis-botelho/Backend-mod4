@@ -18,6 +18,7 @@ export class CreateProfileDto extends Profile {
   @IsNotEmpty({ message: 'The image must not be empty.' })
   image: string | null;
 
+  user: never;
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })

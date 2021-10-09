@@ -4,7 +4,8 @@ import { UpdateProfileDto } from './dto/update-profile.dto';
 export declare class ProfilesService {
     private readonly prisma;
     constructor(prisma: PrismaService);
-    create(data: CreateProfileDto): import(".prisma/client").Prisma.Prisma__ProfilesClient<import(".prisma/client").Profiles>;
+    private readonly _include;
+    create(dto: CreateProfileDto): import(".prisma/client").Prisma.Prisma__ProfilesClient<import(".prisma/client").Profiles>;
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Profiles & {
         games: import(".prisma/client").GamesOnProfiles[];
     })[]>;

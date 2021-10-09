@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   HttpException,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -31,19 +33,20 @@ export class UsersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id).catch((e) => this.notFound(id));
+  findOne(@Param('id') id: number) {
+    return this.usersService.findOne(id).catch((e) => this.notFound(id));
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService
-      .update(+id, updateUserDto)
+      .update(id, updateUserDto)
       .catch((e) => this.notFound(id));
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id).catch((e) => this.notFound(id));
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id') id: number) {
+    return this.usersService.remove(id).catch((e) => this.notFound(id));
   }
 }

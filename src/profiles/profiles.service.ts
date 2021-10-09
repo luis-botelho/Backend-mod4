@@ -6,8 +6,21 @@ import { UpdateProfileDto } from './dto/update-profile.dto';
 @Injectable()
 export class ProfilesService {
   constructor(private readonly prisma: PrismaService) {}
-  create(data: CreateProfileDto) {
-    return this.prisma.profiles.create({ data });
+  private readonly _include = {
+    games: {
+      select: {
+        title: true,
+        cover: true,
+        description: true,
+        year: true,
+        trailer: true,
+        imdb: true,
+        gameplay: true,
+      },
+    },
+  };
+  create(dto: CreateProfileDto) {
+    return this.prisma.profiles.create({ dto });
   }
 
   findAll() {

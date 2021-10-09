@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Genre } from 'src/genres/entities/genre.entity';
 import { Game } from '../entities/game.entity';
 export declare class CreateGameDto extends Game {
     title: string;
@@ -8,6 +8,5 @@ export declare class CreateGameDto extends Game {
     imdb: number;
     trailer: string | null;
     gameplay: string | null;
-    users?: Prisma.GamesOnProfilesUncheckedCreateNestedManyWithoutGameInput;
-    genres?: Prisma.GenresOnGamesUncheckedCreateNestedManyWithoutGameInput;
+    genres?: Genre[];
 }
