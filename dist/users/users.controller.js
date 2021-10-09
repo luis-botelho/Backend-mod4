@@ -35,7 +35,7 @@ let UsersController = class UsersController {
     }
     update(id, updateUserDto) {
         return this.usersService
-            .update(+id, updateUserDto)
+            .update(id, updateUserDto)
             .catch((e) => this.notFound(id));
     }
     remove(id) {
@@ -72,6 +72,7 @@ __decorate([
 ], UsersController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
